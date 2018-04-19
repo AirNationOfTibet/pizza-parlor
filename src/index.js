@@ -31,16 +31,11 @@ function* rootSaga () {
     // } catch (error) {}
 }
 
-const currentOrder = (state = 0, action) => {
-    if (action.type === 'ADD_PIZZA') {
+const currentOrder = (state = [], action) => {
+    
+    if (action.type === 'MINUS_PIZZA') {
         console.log('order state', state);
-       
-        return state ;
-    }else if (action.type === 'MINUS_PIZZA') {
-        console.log('order state', state);
-        // if(state <= 0){
-        //     return state = 0
-        // }
+        return  action.payload
         
         return state;
     }
