@@ -4,7 +4,7 @@ const pool = require('../modules/pool');
 const router = express.Router();
 
 router.get('/', (req, res) => {
-  console.log('made it to router.get')
+  console.log('made it to pizza router.get')
   const queryText = 'SELECT * FROM pizza';
   pool.query(queryText)
     .then((result) => { res.send(result.rows); })
