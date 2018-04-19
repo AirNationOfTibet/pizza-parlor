@@ -21,30 +21,21 @@ console.log('get response', response)
         });
         
     }
-    // handleClickPlus = (pizza) => {
-        
-    //     this.props.dispatch({ type: 'MINUS_PIZZA', 
-    //     payload: {pizza: pizza, 
-    //         orders: 1}
-    //    });
-        
-    //   }
-    //   handleClickMinus = (pizza) => {
-          
-    //     this.props.dispatch({ type: 'MINUS_PIZZA', 
-    //     payload: {pizza: pizza, 
-    //         orders: 1}
-    //    });
-        
-    //   }
-
+submitPizza = (pizzaArr)=>{
+console.log(this.props.reduxState)
+}
     render(){
+
         let pizzaArr = this.state.pizzas.map( (pizza)=>{
             return <PizzaItem pizza={pizza} pizzas={this.state.pizzas}
              />
          })
         return(
+
             <div>
+                <button onClick={()=>this.submitPizza(this.props.reduxState)}>submit pizza</button>
+                {/* <pre>{JSON.stringify(this.props.reduxState)}</pre> */}
+
             {/* <button onClick={()=>this.handleClickPlus()}>+ order</button>
             <button onClick={()=>this.handleClickMinus()}>- order</button> */}
             {pizzaArr}
