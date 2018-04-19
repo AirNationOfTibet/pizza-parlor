@@ -16,18 +16,44 @@ const sagaMiddleware  = createSagaMiddleware();
 
 function* rootSaga () {
     console.log('rootSaga loaded');
-    yield 1;
+    yield takeEvery('GET_PIZZAS', firstSaga);
   }
 
-// ReactDOM.render(<App />, document.getElementById('root'));
-// registerServiceWorker();
+  function* firstSaga(action){
+    console.log('first saga', action);
+    // try {
+    //     const elementsResponse = yield call(axios.get, '/api/pizza');
+    //     console.log(elementsResponse)
+    //     yield put({
+    //         type: '',
+    //         payload: elementsResponse.data
+    //     })
+    // } catch (error) {}
+}
+
+const currentOrder = (state = 0, action) => {
+    if (action.type === 'ADD_PIZZA') {
+        console.log('order state', state);
+       
+        return state ;
+    }else if (action.type === 'MINUS_PIZZA') {
+        console.log('order state', state);
+        // if(state <= 0){
+        //     return state = 0
+        // }
+        
+        return state;
+    }
+    return state;
+}
 
 
 const storeInstance = createStore(
     // This function is our first reducer
     // reducer is a function that runs every time an action is dispatched
     combineReducers({
-
+        currentOrder
+        
 
     }),
     applyMiddleware(sagaMiddleware, logger)
