@@ -4,9 +4,15 @@ import { connect } from 'react-redux';
 
 class OrderList extends Component{
     componentDidMount(){
-        axios.get('api/orders').then((response)=>{
-            console.log('get response', response)
-        })
+        // axios.get('api/orders').then((response)=>{
+        //     console.log('get response', response)
+        // })
+        this.props.dispatch(
+            {
+               type: 'DISPLAY_ORDER'
+            }
+        )
+
     }
 
     render(){
@@ -35,6 +41,7 @@ class OrderList extends Component{
                 </tr>
                 {orderArray}
             </table>
+            <pre>{JSON.stringify(this.props.reduxState.orderReducer)}</pre>
             </div>
         )
     }

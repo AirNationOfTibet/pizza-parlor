@@ -20,12 +20,13 @@ function* rootSaga () {
     yield takeEvery('POST_PIZZAS', postSaga);
     yield takeEvery('GET_ORDERS', getOrderSaga);
 
+
   }
 
   function* getOrderSaga(action){
     console.log('get saga', action);
     try {
-        const elementsResponse = yield call(axios.get, '/api/order');
+        const elementsResponse = yield call(axios.get, '/api/orders');
         console.log(elementsResponse)
         yield put({
             type: 'DISPLAY_ORDER',
@@ -35,9 +36,11 @@ function* rootSaga () {
 }
 
     function* postSaga(action){
-        console.log('post Saga ', action);
+        console.log('post Saga ', action.payload);
+
         try {
-        const pizzaResponse = yield call(axios.post, '/api/order');
+        const pizzaResponse = yield call(axios.put, '/api/orders', action.payload);
+        
         console.log(pizzaResponse)
         yield put({
             type: 'GET_ORDERS',
@@ -48,8 +51,9 @@ function* rootSaga () {
 
     const orderReducer =(state, action)=>{
         if(action.type === 'DISPLAY_ORDER'){
-            return []
-        }
+            console.log('this is the action payload of display', action.payload);
+            return action.payload
+        } return state;
     }
 
 
