@@ -22,7 +22,8 @@ console.log('get response', response)
         
     }
 submitPizza = (pizzaArr)=>{
-console.log(this.props.reduxState)
+console.log( pizzaArr)
+
 }
     render(){
 
@@ -33,8 +34,8 @@ console.log(this.props.reduxState)
         return(
 
             <div>
-                <button onClick={()=>this.submitPizza(this.props.reduxState)}>submit pizza</button>
-                {/* <pre>{JSON.stringify(this.props.reduxState)}</pre> */}
+                {/* <button onClick={()=>this.submitPizza(pizzaArr)}>submit pizza</button> */}
+                <pre>{JSON.stringify(this.props.reduxState)}</pre>
 
             {/* <button onClick={()=>this.handleClickPlus()}>+ order</button>
             <button onClick={()=>this.handleClickMinus()}>- order</button> */}
