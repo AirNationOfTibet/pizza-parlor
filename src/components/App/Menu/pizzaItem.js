@@ -47,7 +47,7 @@ class PizzaItem extends Component {
 
     render(){
         return(
-            <div key={this.props.pizza.id}><h2>{this.props.pizza.name}</h2>
+            <div key={this.props.pizza.id}><h2>{this.props.pizza.name}</h2><br></br><br></br>
             <button onClick={()=>this.handleClickPlus(this.props.pizza)}>+</button>
             <button onClick={()=>this.handleClickMinus(this.props.pizza)}>-</button>
             <button onClick={()=>this.submitPizza(this.props.pizza)}>Add Pizza</button>
