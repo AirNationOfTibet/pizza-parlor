@@ -35,7 +35,7 @@ const currentOrder = (state = [], action) => {
     
     if (action.type === 'MINUS_PIZZA') {
         console.log('order state', state);
-        return  action.payload
+        return  [...state, action.payload]
         
         return state;
     }
