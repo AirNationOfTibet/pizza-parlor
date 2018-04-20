@@ -52,11 +52,6 @@ console.log( pizzaArr)
             
 
             <div>
-                {/* <button onClick={()=>this.submitPizza(pizzaArr)}>submit pizza</button> */}
-                <pre>{JSON.stringify(this.props.reduxState)}</pre>
-
-            {/* <button onClick={()=>this.handleClickPlus()}>+ order</button>
-            <button onClick={()=>this.handleClickMinus()}>- order</button> */}
             {pizzaArr}
         </div>
         )
