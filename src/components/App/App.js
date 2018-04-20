@@ -26,7 +26,6 @@ class App extends Component {
         </nav>
        
         <br/>
-        <p>Pizza is great.</p>
         
         <Route exact path="/menu" component={Menu}/>
         <Route path="/checkout" component={Checkout}/>

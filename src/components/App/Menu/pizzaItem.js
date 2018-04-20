@@ -14,26 +14,20 @@ class PizzaItem extends Component {
     
     handleClickPlus = () => {
         this.state.orderSize = this.state.orderSize + 1
-    //     console.log( this.state.orderSize)
-    //     this.props.dispatch({ type: 'MINUS_PIZZA', 
-    //     payload: {pizza: pizza, 
-    //         orders:  this.state.orderSize}
-    //    }); 
        this.setState({
         orderSize: this.state.orderSize
 
     })
-    // console.log(this.state)
+
       }
       handleClickMinus = () => {
+          if (this.state.orderSize > 0) {
         this.state.orderSize = this.state.orderSize - 1
-    //     this.props.dispatch({ type: 'MINUS_PIZZA', 
-    //     payload: {pizza: pizza, 
-    //         orders:  this.state.orderSize}
-    //    });
+
         this.setState({
             orderSize: this.state.orderSize
         })
+    }
       }
       submitPizza = (pizza)=>{
         this.props.dispatch({ type: 'MINUS_PIZZA', 

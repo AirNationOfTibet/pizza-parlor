@@ -1,7 +1,19 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import PizzaItem from '../Menu/pizzaItem';
 import { Link} from 'react-router-dom';
+import { withStyles } from 'material-ui/styles';
+import Card, { CardActions, CardContent } from 'material-ui/Card';
+import Button from 'material-ui/Button';
+import Typography from 'material-ui/Typography';
+import Paper from 'material-ui/Paper';
+
+const style = {
+    height: 60,
+    width: 220,
+    margin: 10,
+    textAlign: 'center',
+    display: 'inline-block',
+  };
 
 class Checkout extends Component {
     constructor(props) {
@@ -24,8 +36,6 @@ class Checkout extends Component {
         this.setState({
             order_total: totalOrder
         });
-
-
     }
 
    handleSubmit  = () => {
@@ -49,25 +59,15 @@ class Checkout extends Component {
 
     render() {
         let pizzaCheckout = this.props.reduxState.currentOrder.map((pizza) => {
-            return <h2 key={pizza.pizza.id}>{pizza.pizza.name}<span>{pizza.pizza.cost}</span> {pizza.orders}</h2>
+            return <Paper style={style}><p key={pizza.pizza.id}>{pizza.orders} {pizza.pizza.name}, unit price: {pizza.pizza.cost} </p></Paper>
         })
 
         return (
             <div>
-
-                <input type="text" onChange={this.handleChange('customer_name')} placeholder="Your name"></input>
-                <h2>This is the checkout component</h2>
-                <pre>{JSON.stringify(this.props.reduxState.currentOrder)}</pre>
-                <p>This is state order name: {this.state.customer_name}</p>
-
-                {pizzaCheckout}
+                <div><input type="text" onChange={this.handleChange('customer_name')} placeholder="Your name"></input></div>
+                <div>{pizzaCheckout}</div>
                 <div><p>Total: {this.state.order_total}</p></div>
                 <div><button onClick={this.handleSubmit}>Checkout</button></div>
-
-
-
-
-
             </div>
         )
     }
