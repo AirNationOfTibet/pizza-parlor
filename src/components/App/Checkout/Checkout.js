@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PizzaItem from '../Menu/pizzaItem';
+import { Link} from 'react-router-dom';
 
 class Checkout extends Component {
     constructor(props){
@@ -10,6 +11,16 @@ class Checkout extends Component {
             orderSize: 0
           }
     }
+
+    postPizza = (pizza) => {
+        this.props.dispatch({ type: 'POST_PIZZA', 
+        payload: {
+            pizza: pizza, 
+            orders:  this.state.pizzas}
+       });
+    }
+
+
     componentDidMount(){
         console.log(this.state.order)
         
@@ -27,8 +38,7 @@ class Checkout extends Component {
             <h2>This is the checkout component</h2>
             <pre>{JSON.stringify(this.props.reduxState.currentOrder)}</pre>
             {pizzaCheckout}
-            
-   
+            <Link to="/order"><button onClick={()=>{this.postPizza(this.state.pizza)}}>COMPLETE ORDER</button></Link>
             </div>
         )
     }
