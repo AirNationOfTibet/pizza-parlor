@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import axios from 'axios';
 import './App.css';
 import { BrowserRouter as Router, Route, Link} from 'react-router-dom';
 import Checkout from './Checkout/Checkout.js';
 import Menu from './Menu/Menu.js';
+import Order from './Order/Order.js'
 
 class App extends Component {
 
@@ -30,6 +30,7 @@ class App extends Component {
         
         <Route exact path="/menu" component={Menu}/>
         <Route path="/checkout" component={Checkout}/>
+        <Route path="/order" component={Order}/>
       </div>
       </Router>
     );

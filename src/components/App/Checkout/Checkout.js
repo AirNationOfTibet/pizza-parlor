@@ -6,6 +6,7 @@ class Checkout extends Component {
     render(){
         return(
             <div>
+            <input type="text" placeholder="Your name"></input>    
             <h2>This is the checkout component</h2>
             </div>
         )

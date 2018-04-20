@@ -11,7 +11,7 @@ class Menu extends Component {
       }
     componentDidMount(){
         axios.get('/api/pizza').then((response) => {
-console.log('get response', response)
+            console.log('get response', response)
             this.setState({
                 pizzas: response.data
             })
@@ -27,7 +27,7 @@ console.log(this.props.reduxState)
     render(){
 
         let pizzaArr = this.state.pizzas.map( (pizza)=>{
-            return <PizzaItem pizza={pizza} pizzas={this.state.pizzas}
+            return <PizzaItem key={pizza.id} pizza={pizza} pizzas={this.state.pizzas}
              />
          })
         return(
