@@ -25,7 +25,7 @@ function* rootSaga () {
   function* getOrderSaga(action){
     console.log('get saga', action);
     try {
-        const elementsResponse = yield call(axios.get, '/api/order');
+        const elementsResponse = yield call(axios.get, '/api/orders');
         console.log(elementsResponse)
         yield put({
             type: 'DISPLAY_ORDER',
@@ -37,7 +37,7 @@ function* rootSaga () {
     function* postSaga(action){
         console.log('post Saga ', action);
         try {
-        const pizzaResponse = yield call(axios.post, '/api/order');
+        const pizzaResponse = yield call(axios.put,'/api/orders', action.payload);
         console.log(pizzaResponse)
         yield put({
             type: 'GET_ORDERS',

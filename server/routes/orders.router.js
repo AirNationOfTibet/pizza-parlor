@@ -15,7 +15,7 @@ router.get('/', (req, res) => {
 });
 
 router.put('/', (req, res) => {
-
+console.log('put request')
     const newOrder = req.body;
     let newOrderTime = new Date().toISOString().slice(0, 19).replace('T', ' ');
   
