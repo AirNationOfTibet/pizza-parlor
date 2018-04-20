@@ -16,20 +16,42 @@ const sagaMiddleware  = createSagaMiddleware();
 
 function* rootSaga () {
     console.log('rootSaga loaded');
-    yield takeEvery('GET_PIZZAS', firstSaga);
+    // yield takeEvery('GET_PIZZAS', getOrderSaga);
+    yield takeEvery('POST_PIZZAS', postSaga);
+    yield takeEvery('GET_ORDERS', getOrderSaga);
+
   }
 
-  function* firstSaga(action){
-    console.log('first saga', action);
-    // try {
-    //     const elementsResponse = yield call(axios.get, '/api/pizza');
-    //     console.log(elementsResponse)
-    //     yield put({
-    //         type: '',
-    //         payload: elementsResponse.data
-    //     })
-    // } catch (error) {}
+  function* getOrderSaga(action){
+    console.log('get saga', action);
+    try {
+        const elementsResponse = yield call(axios.get, '/api/order');
+        console.log(elementsResponse)
+        yield put({
+            type: 'DISPLAY_ORDER',
+            payload: elementsResponse.data
+        })
+    } catch (error) {}
 }
+
+    function* postSaga(action){
+        console.log('post Saga ', action);
+        try {
+        const pizzaResponse = yield call(axios.post, '/api/order');
+        console.log(pizzaResponse)
+        yield put({
+            type: 'GET_ORDERS',
+            // payload: pizzaResponse.data
+        })
+    } catch (error) {}
+    }
+
+    const orderReducer =(state, action)=>{
+        if(action.type === 'DISPLAY_ORDER'){
+            return []
+        }
+    }
+
 
 const currentOrder = (state = [], action) => {
     

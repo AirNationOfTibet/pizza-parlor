@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PizzaItem from '../Menu/pizzaItem';
+import { Link} from 'react-router-dom';
 
 class Checkout extends Component {
     constructor(props) {
@@ -13,9 +14,6 @@ class Checkout extends Component {
     }
 
 
-
-
-
     componentDidMount() {
         let totalOrder = 0;
 
@@ -26,6 +24,7 @@ class Checkout extends Component {
         this.setState({
             order_total: totalOrder
         });
+
 
     }
 
@@ -55,6 +54,7 @@ class Checkout extends Component {
 
         return (
             <div>
+
                 <input type="text" onChange={this.handleChange('customer_name')} placeholder="Your name"></input>
                 <h2>This is the checkout component</h2>
                 <pre>{JSON.stringify(this.props.reduxState.currentOrder)}</pre>
@@ -63,6 +63,7 @@ class Checkout extends Component {
                 {pizzaCheckout}
                 <div><p>Total: {this.state.order_total}</p></div>
                 <div><button onClick={this.handleSubmit}>Checkout</button></div>
+
 
 
 
